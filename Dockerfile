@@ -1,10 +1,9 @@
-# Dockerfile to run your Python script (expects script.py in the build context)
-FROM python:3.11-slim
+# hello-world Dockerfile
+FROM ubuntu:22.04
 
-WORKDIR /app
+RUN apt-get update && apt-get install -y bash
 
-# Copy project files
-COPY . /app
+COPY hello.sh /app/hello.sh
+RUN chmod +x /app/hello.sh
 
-# Default command to start the Python script (change script.py if needed)
-CMD ["python", "script.py"]
+CMD ["/app/hello.sh"]
